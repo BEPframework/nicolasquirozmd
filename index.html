@@ -30,8 +30,6 @@
       min-height: 100vh;
       transition: all 0.5s ease;
     }
-
-    /* Fixed top navigation bar */
     nav.tabs {
       position: fixed;
       top: 0;
@@ -64,8 +62,6 @@
       box-shadow: 0 0 30px rgba(0,240,255,0.5);
       border-color: transparent;
     }
-
-    /* Hero section – pushed down to make room for fixed nav */
     header.hero {
       background: var(--gradient);
       color: white;
@@ -74,7 +70,7 @@
       position: relative;
       min-height: 60vh;
       overflow: visible;
-      margin-top: 100px; /* Adjust this value (90–120px) if tabs overlap slightly */
+      margin-top: 100px;
     }
     header.hero::after {
       content: '';
@@ -109,18 +105,10 @@
       margin: 0 auto;
     }
     .theme-toggle {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: rgba(255,255,255,0.15);
-      border: none;
-      color: white;
-      font-size: 1.6rem;
-      padding: 1rem;
-      border-radius: 50%;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      transition: all 0.4s;
+      position: absolute; top: 2rem; right: 2rem;
+      background: rgba(255,255,255,0.15); border: none; color: white;
+      font-size: 1.6rem; padding: 1rem; border-radius: 50%; cursor: pointer;
+      backdrop-filter: blur(8px); transition: all 0.4s;
     }
     .theme-toggle:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
     main.container {
@@ -168,7 +156,6 @@
 </head>
 <body>
 
-  <!-- Navigation bar – fixed at the top -->
   <nav class="tabs">
     <button data-tab="home" class="active">Home</button>
     <button data-tab="research">Research</button>
@@ -178,7 +165,6 @@
     <button data-tab="social">Social</button>
   </nav>
 
-  <!-- Hero section – now below the fixed nav -->
   <header class="hero">
     <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
     <h1>Redefining Human Potential Through Radical Innovation</h1>
@@ -205,7 +191,7 @@
       </div>
     </section>
 
-    <!-- RESEARCH -->
+    <!-- RESEARCH – String Theory Cosmos added here -->
     <section id="research" class="tab-content">
       <div class="card">
         <h2>Core Research Domains</h2>
@@ -217,6 +203,16 @@
           <li><i class="fas fa-mobile-screen"></i> Digital health innovation, wearable sensors, biomedical signal processing, nonstationary plasma/fusion signal analysis analogs</li>
         </ul>
       </div>
+
+      <!-- New card for string-theory-cosmos -->
+      <div class="card">
+        <h2>String Theory / Cosmos Toy Model</h2>
+        <p>Interactive, deterministic browser-based simulation exploring string/M-theory concepts, cosmology, parameter sweeps, and exportable time-series data. Built as a research/educational tool with real-time canvas visualization of strings, branes, inflation, black holes, and more.</p>
+        <p><strong>Key Features:</strong> Reproducible via seed, sliders for gravity/psi/tension, pause/resume, JSON/CSV export, batch sweeps, dark mode.</p>
+        <p><a href="https://BEPframework.github.io/string-theory-cosmos/" target="_blank" style="display: inline-block; margin: 1rem 0; padding: 0.8rem 1.6rem; background: var(--accent); color: #000; border-radius: 999px; text-decoration: none; font-weight: bold;">Launch Interactive Demo →</a></p>
+        <p><a href="https://github.com/BEPframework/string-theory-cosmos" target="_blank">View Source Code on GitHub</a> • <a href="https://doi.org/10.5281/zenodo.18792437" target="_blank">DOI: 10.5281/zenodo.18792437</a></p>
+      </div>
+
       <div class="card">
         <h2>Foundation</h2>
         <p>MD (Universidad Autónoma de Guadalajara) + Chemistry background (Fresno State) + surgical internship provide deep insight into embodied systems — fueling unrestricted theoretical and applied innovation under IZ LLC.</p>
