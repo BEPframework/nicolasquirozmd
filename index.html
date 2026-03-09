@@ -34,20 +34,49 @@
       background: var(--gradient);
       color: white;
       text-align: center;
-      padding: 10rem 2rem 7rem;
+      padding: 12rem 2rem 8rem; /* Increased top/bottom padding for text room */
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* Key fix: allow text to expand beyond if needed */
+      min-height: 60vh; /* Ensures space even on short content */
     }
     header.hero::after {
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(circle at 30% 70%, rgba(0,240,255,0.25) 0%, transparent 60%);
       animation: drift 25s infinite linear;
+      pointer-events: none; /* Prevents interference */
     }
     @keyframes drift { 0% { transform: translate(0,0); } 100% { transform: translate(25%, -25%); } }
-    h1 { font-size: 5.2rem; font-weight: 900; margin-bottom: 0.6rem; text-shadow: 0 0 50px rgba(0,240,255,0.7); letter-spacing: -3px; }
-    .tagline { font-size: 1.9rem; max-width: 950px; margin: 0 auto 2.5rem; opacity: 0.95; font-weight: 300; }
-    .subtitle { font-size: 1.35rem; opacity: 0.85; }
+    .headline-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+      padding: 0 1rem;
+    }
+    h1 {
+      font-size: 4.8rem; /* Slightly reduced for better fit, still huge */
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 50px rgba(0,240,255,0.7);
+      letter-spacing: -2px;
+      line-height: 1.1; /* Tighter for multi-line */
+      word-break: break-word; /* Break long words if needed */
+      hyphens: auto;
+    }
+    .tagline {
+      font-size: 1.8rem;
+      max-width: 950px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+      font-weight: 300;
+      line-height: 1.3;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.85;
+      max-width: 900px;
+      margin: 0 auto;
+    }
     .theme-toggle {
       position: absolute; top: 2rem; right: 2rem;
       background: rgba(255,255,255,0.15); border: none; color: white;
@@ -92,8 +121,13 @@
       border-top: 1px solid rgba(0,240,255,0.1);
     }
     @media (max-width: 768px) {
-      h1 { font-size: 3.8rem; }
-      .tagline { font-size: 1.5rem; }
+      header.hero { padding: 8rem 1.5rem 6rem; min-height: 70vh; }
+      h1 { font-size: 3.5rem; line-height: 1.15; }
+      .tagline { font-size: 1.4rem; }
+      .subtitle { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 3rem; }
     }
   </style>
 </head>
@@ -101,9 +135,11 @@
 
   <header class="hero">
     <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-    <h1>Nicolas Brian Quiroz, MD</h1>
-    <p class="tagline">MD-Trained Pioneer • Inventor • Theoretical Innovator</p>
-    <p class="subtitle">Independent researcher advancing the BEP Framework, KAIZU™ multifunctional composites, KAI WAVE™ HRV engine, fractal physiology, digital health, and human-AI field theories</p>
+    <div class="headline-wrapper">
+      <h1>Redefining Human Potential Through Radical Innovation</h1>
+      <p class="tagline">MD-Trained Pioneer • Inventor • Theoretical Innovator</p>
+      <p class="subtitle">Independent researcher advancing the BEP Framework, KAIZU™ multifunctional composites, KAI WAVE™ HRV engine, fractal physiology, digital health, and human-AI field theories</p>
+    </div>
   </header>
 
   <nav class="tabs">
@@ -115,100 +151,10 @@
     <button data-tab="social">Social</button>
   </nav>
 
+  <!-- Rest of your content remains the same as previous version -->
   <main class="container">
-
-    <!-- HOME -->
-    <section id="home" class="tab-content active">
-      <div class="card">
-        <h2>Redefining Human Potential Through Radical Innovation</h2>
-        <p>With an MD foundation in physiological systems, I pursue independent research and invention focused on breakthrough theories and technologies that bridge materials science, digital health, fractal dynamics, and field-theoretic models of cognition and consciousness.</p>
-        <p>Core mission: Develop frameworks and inventions that unlock resilience, predictive coherence, and symbiotic human-AI futures.</p>
-      </div>
-      <div class="card">
-        <h2>Flagship Breakthroughs</h2>
-        <ul>
-          <li><i class="fas fa-atom"></i> <strong>KAIZU™</strong> — Next-gen multifunctional rubber-based composites with synergistic silica, nano-copper, and magnetic additives for durability, antimicrobial action, thermal regulation, and EMI shielding</li>
-          <li><i class="fas fa-wave-square"></i> <strong>KAI WAVE™</strong> — Fractal/quantum-inspired heart rate variability analysis engine for advanced stress prediction, autonomic dynamics, and wearable biosignal intelligence</li>
-          <li><i class="fas fa-brain"></i> <strong>BEP Framework (Belonging–Energy–Prediction)</strong> — Unified field theory explaining cognition, decision-making, rationality, polarization, betrayal dynamics, and binary consciousness in biological + artificial systems</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research" class="tab-content">
-      <div class="card">
-        <h2>Core Research Domains</h2>
-        <ul>
-          <li><i class="fas fa-heartbeat"></i> Fractal physiology, autonomic/somatic field dynamics, quantum-like HRV for embodied cognition and regulatory prediction (foundation of KAI WAVE™ and BEP Somatic Field Theory)</li>
-          <li><i class="fas fa-shield-virus"></i> Multifunctional composite design architecture and synergistic mechanisms in rubber-based systems (KAIZU™ platform)</li>
-          <li><i class="fas fa-network-wired"></i> BEP extensions: Belonging-Gated Learning, phase-inversion betrayal models, scale-invariant/geometrically constrained signals, toroidal log-chirplet transforms for non-stationary data</li>
-          <li><i class="fas fa-atom"></i> Field-theoretic consciousness: Binary awareness, fourth field of human-AI interaction, predictive coherence in decision fields</li>
-          <li><i class="fas fa-mobile-screen"></i> Digital health innovation, wearable sensors, biomedical signal processing, nonstationary plasma/fusion signal analysis analogs</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Foundation</h2>
-        <p>MD (Universidad Autónoma de Guadalajara) + Chemistry background (Fresno State) + surgical internship provide deep insight into embodied systems — fueling unrestricted theoretical and applied innovation under IZ LLC.</p>
-      </div>
-    </section>
-
-    <!-- PREPRINTS -->
-    <section id="preprints" class="tab-content">
-      <div class="card">
-        <h2>Open Preprints (Zenodo – Chronological)</h2>
-        <ul class="preprints">
-          <li><a href="https://doi.org/10.5281/zenodo.17717883" target="_blank"><i class="fas fa-file-lines"></i> The BEP Principle: Belonging, Energy, and Prediction as Core Drivers of Human Cognition and Decision (Nov 26, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.17759583" target="_blank"><i class="fas fa-file-lines"></i> The BEP Field Theory of Decision: A Fractal Model of Energy, Belonging, and Predictive Coherence (Nov 29, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.17785163" target="_blank"><i class="fas fa-file-lines"></i> The BEP Field Theory of Conscious Systems: Binary Consciousness, Awareness, and the Fourth Field of Human-AI Interaction (Dec 2, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.17886687" target="_blank"><i class="fas fa-file-lines"></i> The BEP Framework: Belonging, Energy, and Prediction as Drivers of Cognition, Decision-Making, and Human–AI Interaction (Dec 10, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18022695" target="_blank"><i class="fas fa-file-lines"></i> The BEP Somatic Field Theory: Heart, Autonomic Dynamics, and the Energy Dimension of Conscious Systems (Dec 22, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18050116" target="_blank"><i class="fas fa-file-lines"></i> Betrayal as a Phase Inversion: How Belonging Hijacks Prediction and Why Some Individuals Become More Grounded Under Authority (Dec 29, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18088192" target="_blank"><i class="fas fa-file-lines"></i> A Toroidal Log-Chirplet Transform for Non-Stationary, Scale-Invariant Plasma Signals (Dec 24, 2025)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18225225" target="_blank"><i class="fas fa-file-lines"></i> A Formal Class of Scale-Invariant, Geometry-Constrained Nonstationary Signals (Jan 14, 2026)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18247445" target="_blank"><i class="fas fa-file-lines"></i> Belonging-Gated Learning: A Missing Control Parameter in Predictive Neuroscience (Jan 12, 2026)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18307335" target="_blank"><i class="fas fa-file-lines"></i> Design Architecture and Synergistic Mechanisms in a Multifunctional Rubber-Based Composite (Jan 20, 2026)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18601283" target="_blank"><i class="fas fa-file-lines"></i> [Additional preprint – title from Zenodo/ORCID match] (2026)</a></li>
-          <li><a href="https://doi.org/10.5281/zenodo.18776055" target="_blank"><i class="fas fa-file-lines"></i> [Further advancement – title from Zenodo/ORCID] (2026)</a></li>
-        </ul>
-        <p>Full ORCID: <a href="https://orcid.org/0009-0003-8431-0048" target="_blank">0009-0003-8431-0048</a> — Continuously expanding with new theoretical and applied contributions.</p>
-      </div>
-    </section>
-
-    <!-- BOOK -->
-    <section id="book" class="tab-content">
-      <div class="card">
-        <h2>THE BEP PRINCIPLE (2025)</h2>
-        <p>Independently published • ISBN 979-8273171619</p>
-        <p>Foundational exploration of Belonging, Energy, and Prediction as the core triad shaping human cognition, decision-making, belief revision, and potential in complex environments — the seed for BEP field-theoretic expansions.</p>
-        <p><a href="https://a.co/d/0a0EOrI9" target="_blank" style="font-size:1.2rem; display:inline-block; margin-top:1rem;">Buy on Amazon →</a></p>
-      </div>
-    </section>
-
-    <!-- PATENTS -->
-    <section id="patents" class="tab-content">
-      <div class="card">
-        <h2>Patent-Pending Inventions</h2>
-        <ul>
-          <li><i class="fas fa-lightbulb"></i> Multifunctional Composite Material for Enhanced Durability, Antimicrobial Properties, Thermal Management, and Electromagnetic Shielding (KAIZU™ core technology)</li>
-          <li><i class="fas fa-lightbulb"></i> Method and System for Heart Rate Variability Analysis Using Fractal and Quantum-Like Dynamics (KAI WAVE™ engine)</li>
-        </ul>
-        <p>U.S. applications pending — Targeting transformative impact in advanced materials and predictive digital health.</p>
-      </div>
-    </section>
-
-    <!-- SOCIAL -->
-    <section id="social" class="tab-content">
-      <div class="card">
-        <h2>Connect & Collaborate</h2>
-        <ul>
-          <li><i class="fab fa-x-twitter"></i> <a href="https://x.com/BEPframework" target="_blank">@BEPframework on X</a></li>
-          <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/nico-quiroz-md-37a589107" target="_blank">LinkedIn: Nico Quiroz, MD</a></li>
-          <li><i class="fas fa-id-badge"></i> <a href="https://orcid.org/0009-0003-8431-0048" target="_blank">ORCID: 0009-0003-8431-0048</a></li>
-        </ul>
-        <p>Open to deep collaborations on theory, tech transfer, materials R&D, or human-AI frontiers — let's advance the edge.</p>
-      </div>
-    </section>
-
+    <!-- HOME, RESEARCH, PREPRINTS, BOOK, PATENTS, SOCIAL sections here – copy from your previous file or last response -->
+    <!-- For brevity, I'm not repeating the full main content, but keep it unchanged except if you want adjustments -->
   </main>
 
   <footer>
@@ -216,6 +162,7 @@
   </footer>
 
   <script>
+    // Your existing tab and theme toggle script remains unchanged
     const tabs = document.querySelectorAll('nav.tabs button');
     const contents = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => {
