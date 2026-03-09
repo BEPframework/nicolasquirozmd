@@ -31,7 +31,7 @@
       transition: all 0.5s ease;
     }
 
-    /* Top navigation bar – moved here and made sticky */
+    /* Fixed top navigation bar */
     nav.tabs {
       position: fixed;
       top: 0;
@@ -65,7 +65,7 @@
       border-color: transparent;
     }
 
-    /* Hero now has top margin to account for fixed nav height */
+    /* Hero section – pushed down to make room for fixed nav */
     header.hero {
       background: var(--gradient);
       color: white;
@@ -74,7 +74,7 @@
       position: relative;
       min-height: 60vh;
       overflow: visible;
-      margin-top: 100px; /* Space for the fixed nav bar (adjust if nav height changes) */
+      margin-top: 100px; /* Adjust this value (90–120px) if tabs overlap slightly */
     }
     header.hero::after {
       content: '';
@@ -109,10 +109,18 @@
       margin: 0 auto;
     }
     .theme-toggle {
-      position: absolute; top: 2rem; right: 2rem;
-      background: rgba(255,255,255,0.15); border: none; color: white;
-      font-size: 1.6rem; padding: 1rem; border-radius: 50%; cursor: pointer;
-      backdrop-filter: blur(8px); transition: all 0.4s;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      font-size: 1.6rem;
+      padding: 1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.4s;
     }
     .theme-toggle:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
     main.container {
@@ -160,7 +168,7 @@
 </head>
 <body>
 
-  <!-- Navigation now at the top – fixed/sticky -->
+  <!-- Navigation bar – fixed at the top -->
   <nav class="tabs">
     <button data-tab="home" class="active">Home</button>
     <button data-tab="research">Research</button>
@@ -170,6 +178,7 @@
     <button data-tab="social">Social</button>
   </nav>
 
+  <!-- Hero section – now below the fixed nav -->
   <header class="hero">
     <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
     <h1>Redefining Human Potential Through Radical Innovation</h1>
