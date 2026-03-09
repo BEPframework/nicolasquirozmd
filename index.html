@@ -30,14 +30,51 @@
       min-height: 100vh;
       transition: all 0.5s ease;
     }
+
+    /* Top navigation bar – moved here and made sticky */
+    nav.tabs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(17,24,39,0.85);
+      backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,240,255,0.2);
+    }
+    nav.tabs button {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 1.15rem;
+      padding: 0.8rem 1.8rem;
+      cursor: pointer;
+      border-radius: 999px;
+      transition: all 0.4s;
+      font-weight: 600;
+    }
+    nav.tabs button:hover, nav.tabs button.active {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0,240,255,0.5);
+      border-color: transparent;
+    }
+
+    /* Hero now has top margin to account for fixed nav height */
     header.hero {
       background: var(--gradient);
       color: white;
       text-align: center;
-      padding: 14rem 2rem 10rem;          /* Increased padding to prevent cutoff */
+      padding: 12rem 2rem 8rem;
       position: relative;
-      min-height: 70vh;                    /* Ensures enough vertical space */
-      overflow: visible;                   /* Allows text to expand without clipping */
+      min-height: 60vh;
+      overflow: visible;
+      margin-top: 100px; /* Space for the fixed nav bar (adjust if nav height changes) */
     }
     header.hero::after {
       content: '';
@@ -53,7 +90,7 @@
       margin-bottom: 1rem;
       text-shadow: 0 0 50px rgba(0,240,255,0.7);
       letter-spacing: -3px;
-      line-height: 1.05;                   /* Slightly tighter to help multi-line fit */
+      line-height: 1.05;
       word-wrap: break-word;
       hyphens: auto;
     }
@@ -78,31 +115,22 @@
       backdrop-filter: blur(8px); transition: all 0.4s;
     }
     .theme-toggle:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
-    nav.tabs {
-      display: flex; justify-content: center; flex-wrap: wrap;
-      background: rgba(17,24,39,0.75); backdrop-filter: blur(12px);
-      padding: 1.2rem; gap: 1rem; position: sticky; top: 0; z-index: 100;
-      border-bottom: 1px solid rgba(0,240,255,0.2);
-    }
-    nav.tabs button {
-      background: transparent; border: 1px solid var(--accent); color: var(--accent);
-      font-size: 1.15rem; padding: 0.9rem 2rem; cursor: pointer;
-      border-radius: 999px; transition: all 0.4s; font-weight: 600;
-    }
-    nav.tabs button:hover, nav.tabs button.active {
-      background: var(--accent); color: #000; box-shadow: 0 0 30px rgba(0,240,255,0.5);
-      border-color: transparent;
-    }
     main.container {
-      max-width: 1200px; margin: -5rem auto 5rem; padding: 0 2rem;
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
     }
     .tab-content { display: none; }
     .tab-content.active { display: block; animation: fadeUp 1s ease-out; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
     .card {
-      background: var(--card); border: 1px solid rgba(0,240,255,0.15);
-      border-radius: 20px; padding: 3rem; margin-bottom: 2.5rem;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4); transition: all 0.5s;
+      background: var(--card);
+      border: 1px solid rgba(0,240,255,0.15);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      transition: all 0.5s;
     }
     .card:hover { transform: translateY(-12px); box-shadow: 0 25px 60px rgba(0,240,255,0.2); }
     h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 2.8rem; font-weight: 800; }
@@ -111,30 +139,28 @@
     a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.3s; }
     a:hover { color: #ffffff; text-decoration: underline; }
     footer {
-      text-align: center; padding: 4rem 1rem; color: #64748b;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #64748b;
       border-top: 1px solid rgba(0,240,255,0.1);
     }
     @media (max-width: 768px) {
-      header.hero { padding: 10rem 1.5rem 8rem; min-height: 80vh; }
+      header.hero { padding: 10rem 1.5rem 8rem; margin-top: 90px; }
       h1 { font-size: 3.8rem; line-height: 1.1; }
       .tagline { font-size: 1.5rem; }
       .subtitle { font-size: 1.1rem; }
+      nav.tabs { padding: 0.8rem 0; }
+      nav.tabs button { padding: 0.7rem 1.4rem; font-size: 1rem; }
     }
     @media (max-width: 480px) {
-      header.hero { padding: 8rem 1rem 6rem; min-height: 90vh; }
+      header.hero { padding: 8rem 1rem 6rem; margin-top: 80px; }
       h1 { font-size: 3.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <header class="hero">
-    <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-    <h1>Redefining Human Potential Through Radical Innovation</h1>
-    <p class="tagline">MD-Trained Pioneer • Inventor • Theoretical Innovator</p>
-    <p class="subtitle">Independent researcher advancing the BEP Framework, KAIZU™ multifunctional composites, KAI WAVE™ HRV engine, fractal physiology, digital health, and human-AI field theories</p>
-  </header>
-
+  <!-- Navigation now at the top – fixed/sticky -->
   <nav class="tabs">
     <button data-tab="home" class="active">Home</button>
     <button data-tab="research">Research</button>
@@ -143,6 +169,13 @@
     <button data-tab="patents">Patents</button>
     <button data-tab="social">Social</button>
   </nav>
+
+  <header class="hero">
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+    <h1>Redefining Human Potential Through Radical Innovation</h1>
+    <p class="tagline">MD-Trained Pioneer • Inventor • Theoretical Innovator</p>
+    <p class="subtitle">Independent researcher advancing the BEP Framework, KAIZU™ multifunctional composites, KAI WAVE™ HRV engine, fractal physiology, digital health, and human-AI field theories</p>
+  </header>
 
   <main class="container">
 
