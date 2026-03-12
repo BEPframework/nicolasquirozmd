@@ -111,7 +111,7 @@
       </div>
     </section>
 
-    <!-- PREPRINTS -->
+    <!-- PREPRINTS (now links to your Zenodo page) -->
     <section id="preprints" class="tab-content">
       <div class="card">
         <h2>Featured Preprints</h2>
@@ -124,7 +124,12 @@
           <li><a href="https://doi.org/10.5281/zenodo.18776055" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> When Care Becomes Control (2026)</a></li>
         </ul>
         <p style="margin-top:2rem; text-align:center;">
-          <a href="#" onclick="switchTab('preprints'); return false;" style="color:var(--accent); font-weight:bold; font-size:1.1rem;">View all 17 preprints →</a>
+          <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Quiroz%2C%20Nicolas%20Brian%22&l=list&p=1&s=20&sort=newest" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="color:var(--accent); font-weight:bold; font-size:1.1rem;">
+            View all 17 preprints on Zenodo →
+          </a>
         </p>
         <p>Full ORCID: <a href="https://orcid.org/0009-0003-8431-0048" target="_blank" rel="noopener noreferrer">0009-0003-8431-0048</a></p>
       </div>
@@ -174,27 +179,21 @@
 
   <script>
     function switchTab(tabName) {
-      // Deactivate all tabs and sections
       document.querySelectorAll('nav.tabs button').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
-
-      // Activate the chosen tab
       const activeButton = document.querySelector(`button[data-tab="${tabName}"]`);
       if (activeButton) activeButton.classList.add('active');
-
       const activeSection = document.getElementById(tabName);
       if (activeSection) activeSection.classList.add('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Attach click listeners to all top navigation buttons
       document.querySelectorAll('nav.tabs button').forEach(button => {
         button.addEventListener('click', () => {
           switchTab(button.dataset.tab);
         });
       });
 
-      // Theme toggle
       const toggle = document.querySelector('.theme-toggle');
       if (toggle) {
         toggle.addEventListener('click', () => {
