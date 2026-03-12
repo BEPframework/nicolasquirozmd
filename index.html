@@ -68,7 +68,7 @@
               <p><strong>Open-Source on Zenodo & GitHub</strong><br>Full code, benchmarks, and Lyapunov proof freely available</p>
             </div>
           </a>
-          <a href="#patents" onclick="switchTab('patents')" style="text-decoration:none;color:inherit;">
+          <a href="#" onclick="switchTab('patents'); return false;" style="text-decoration:none;color:inherit;">
             <div style="background:rgba(0,240,255,0.05); padding:1.5rem; border-radius:12px; text-align:center; cursor:pointer;">
               <i class="fas fa-lightbulb" style="font-size:2.5rem; color:var(--accent); margin-bottom:1rem;"></i>
               <p><strong>U.S. Patent-Pending</strong><br>Q108D simulation platform with control-assisted latent-space stabilization</p>
@@ -86,9 +86,6 @@
         </p>
       </div>
     </section>
-
-    <!-- RESEARCH, PREPRINTS, BOOK, PATENTS, SOCIAL (unchanged from last version) -->
-    <!-- (I kept everything else exactly the same so you only need to replace the file) -->
 
     <!-- RESEARCH -->
     <section id="research" class="tab-content">
@@ -114,7 +111,7 @@
       </div>
     </section>
 
-    <!-- PREPRINTS (top 6 + View All button that now works) -->
+    <!-- PREPRINTS -->
     <section id="preprints" class="tab-content">
       <div class="card">
         <h2>Featured Preprints</h2>
@@ -133,7 +130,6 @@
       </div>
     </section>
 
-    <!-- BOOK, PATENTS, SOCIAL (unchanged) -->
     <!-- BOOK -->
     <section id="book" class="tab-content">
       <div class="card">
@@ -178,14 +174,27 @@
 
   <script>
     function switchTab(tabName) {
+      // Deactivate all tabs and sections
       document.querySelectorAll('nav.tabs button').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`button[data-tab="${tabName}"]`).classList.add('active');
       document.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
-      const target = document.getElementById(tabName);
-      if (target) target.classList.add('active');
+
+      // Activate the chosen tab
+      const activeButton = document.querySelector(`button[data-tab="${tabName}"]`);
+      if (activeButton) activeButton.classList.add('active');
+
+      const activeSection = document.getElementById(tabName);
+      if (activeSection) activeSection.classList.add('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Attach click listeners to all top navigation buttons
+      document.querySelectorAll('nav.tabs button').forEach(button => {
+        button.addEventListener('click', () => {
+          switchTab(button.dataset.tab);
+        });
+      });
+
+      // Theme toggle
       const toggle = document.querySelector('.theme-toggle');
       if (toggle) {
         toggle.addEventListener('click', () => {
