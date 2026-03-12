@@ -26,8 +26,29 @@
     .card { background:var(--card); border:1px solid rgba(0,240,255,0.15); border-radius:20px; padding:3rem; margin-bottom:2.5rem; box-shadow:0 15px 40px rgba(0,0,0,0.4); transition:all 0.4s; }
     .card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,240,255,0.15); }
     h2 { color:var(--accent); margin-bottom:1.5rem; font-size:2.8rem; font-weight:800; }
-    a { color:var(--accent); text-decoration:none; font-weight:600; transition:color 0.3s; }
-    a:hover { color:#ffffff; text-decoration:underline; }
+
+    /* Oren's polish additions */
+    .evidence-box {
+      background: rgba(0,240,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .evidence-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,240,255,0.12);
+      background: rgba(0,240,255,0.08);
+    }
+    ul.preprints li { margin: 1.2rem 0; font-size: 1.1rem; }
+    ul li i { color: var(--accent); margin-right: 1rem; font-size: 1.2rem; width: 1.8rem; text-align: center; }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
     footer { text-align:center; padding:4rem 1rem; color:#64748b; border-top:1px solid rgba(0,240,255,0.1); }
     @media (max-width:768px) { header.hero { padding:9rem 1.5rem 5rem; margin-top:90px; } h1 { font-size:3.4rem; } }
   </style>
@@ -55,21 +76,22 @@
     <section id="home" class="tab-content active">
       <div class="card">
         <h2>Key Evidence</h2>
+        <p style="margin-bottom:1.5rem; opacity:0.85;">Current work includes real tokamak validation, open-source implementation, and patent-pending simulation platforms for long-horizon control.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
           <a href="https://doi.org/10.5281/zenodo.18939068" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-            <div style="background:rgba(0,240,255,0.05); padding:1.5rem; border-radius:12px; text-align:center; cursor:pointer;">
+            <div class="evidence-box">
               <i class="fas fa-flask" style="font-size:2.5rem; color:var(--accent); margin-bottom:1rem;"></i>
               <p><strong>Real EAST #41195 Validation</strong><br>Ψ_universe attractor outperforms classical methods on actual tokamak data</p>
             </div>
           </a>
           <a href="https://github.com/BEPframework/psi-universe-attractor" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-            <div style="background:rgba(0,240,255,0.05); padding:1.5rem; border-radius:12px; text-align:center; cursor:pointer;">
+            <div class="evidence-box">
               <i class="fas fa-code-branch" style="font-size:2.5rem; color:var(--accent); margin-bottom:1rem;"></i>
               <p><strong>Open-Source on Zenodo & GitHub</strong><br>Full code, benchmarks, and Lyapunov proof freely available</p>
             </div>
           </a>
           <a href="#" onclick="switchTab('patents'); return false;" style="text-decoration:none;color:inherit;">
-            <div style="background:rgba(0,240,255,0.05); padding:1.5rem; border-radius:12px; text-align:center; cursor:pointer;">
+            <div class="evidence-box">
               <i class="fas fa-lightbulb" style="font-size:2.5rem; color:var(--accent); margin-bottom:1rem;"></i>
               <p><strong>U.S. Patent-Pending</strong><br>Q108D simulation platform with control-assisted latent-space stabilization</p>
             </div>
@@ -79,7 +101,7 @@
 
       <div class="card">
         <h2>My Approach</h2>
-        <p>My work focuses on practical, evidence-oriented systems that connect theory to usable tools.</p>
+        <p>My work focuses on practical, evidence-oriented systems that translate theory into usable tools.</p>
         <p style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
           <a href="#" onclick="switchTab('research'); return false;" style="display:inline-block;padding:0.9rem 2rem;background:var(--accent);color:#000;border-radius:999px;text-decoration:none;font-weight:bold;">View Research →</a>
           <a href="#" onclick="switchTab('social'); return false;" style="display:inline-block;padding:0.9rem 2rem;border:2px solid var(--accent);color:var(--accent);border-radius:999px;text-decoration:none;font-weight:bold;">Connect</a>
@@ -111,7 +133,7 @@
       </div>
     </section>
 
-    <!-- PREPRINTS (now links to your Zenodo page) -->
+    <!-- PREPRINTS -->
     <section id="preprints" class="tab-content">
       <div class="card">
         <h2>Featured Preprints</h2>
@@ -125,8 +147,7 @@
         </ul>
         <p style="margin-top:2rem; text-align:center;">
           <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Quiroz%2C%20Nicolas%20Brian%22&l=list&p=1&s=20&sort=newest" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+             target="_blank" rel="noopener noreferrer" 
              style="color:var(--accent); font-weight:bold; font-size:1.1rem;">
             View all 17 preprints on Zenodo →
           </a>
@@ -135,7 +156,7 @@
       </div>
     </section>
 
-    <!-- BOOK -->
+    <!-- BOOK, PATENTS, SOCIAL -->
     <section id="book" class="tab-content">
       <div class="card">
         <h2>THE BEP PRINCIPLE (2025)</h2>
@@ -145,7 +166,6 @@
       </div>
     </section>
 
-    <!-- PATENTS -->
     <section id="patents" class="tab-content">
       <div class="card">
         <h2>Patent-Pending Inventions</h2>
@@ -158,13 +178,13 @@
       </div>
     </section>
 
-    <!-- SOCIAL -->
     <section id="social" class="tab-content">
       <div class="card">
         <h2>Connect & Collaborate</h2>
         <ul>
           <li><i class="fab fa-x-twitter"></i> <a href="https://x.com/BEPframework" target="_blank" rel="noopener noreferrer">@BEPframework on X</a></li>
           <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/nico-quiroz-md-37a589107" target="_blank" rel="noopener noreferrer">LinkedIn: Nico Quiroz, MD</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:BEPframework@nicolasquirozmd.com">BEPframework@nicolasquirozmd.com</a></li>
           <li><i class="fas fa-id-badge"></i> <a href="https://orcid.org/0009-0003-8431-0048" target="_blank" rel="noopener noreferrer">ORCID: 0009-0003-8431-0048</a></li>
         </ul>
         <p>Open to collaboration with plasma physicists, control engineers, materials labs, and research partners.</p>
@@ -189,9 +209,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('nav.tabs button').forEach(button => {
-        button.addEventListener('click', () => {
-          switchTab(button.dataset.tab);
-        });
+        button.addEventListener('click', () => switchTab(button.dataset.tab));
       });
 
       const toggle = document.querySelector('.theme-toggle');
