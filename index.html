@@ -49,6 +49,129 @@
       border-radius: 8px;
     }
 
+    /* App cards grid */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .app-card {
+      background: rgba(0,240,255,0.04);
+      border: 1px solid rgba(0,240,255,0.15);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,240,255,0.12);
+      border-color: var(--accent);
+    }
+    .app-card .app-icon {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .app-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .app-card p {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+    .app-card .app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .app-card .app-tag {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(0,240,255,0.1);
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid rgba(0,240,255,0.2);
+    }
+    .app-card .app-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .app-card .app-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .app-link-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .app-link-primary:hover {
+      box-shadow: 0 0 20px rgba(0,240,255,0.4);
+    }
+    .app-link-secondary {
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+    }
+    .app-link-secondary:hover {
+      background: rgba(0,240,255,0.1);
+    }
+
+    /* Research repo list */
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .repo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 12px;
+      background: rgba(0,240,255,0.04);
+      border: 1px solid rgba(0,240,255,0.1);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .repo-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,240,255,0.1);
+      border-color: var(--accent);
+    }
+    .repo-item i {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .repo-item strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+    .repo-item span {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      line-height: 1.4;
+    }
+
     footer { text-align:center; padding:4rem 1rem; color:#64748b; border-top:1px solid rgba(0,240,255,0.1); }
     @media (max-width:768px) { header.hero { padding:9rem 1.5rem 5rem; margin-top:90px; } h1 { font-size:3.4rem; } }
   </style>
@@ -58,6 +181,7 @@
   <nav class="tabs">
     <button data-tab="home" class="active">Home</button>
     <button data-tab="research">Research</button>
+    <button data-tab="apps">Apps</button>
     <button data-tab="preprints">Preprints</button>
     <button data-tab="book">Book</button>
     <button data-tab="patents">Patents</button>
@@ -104,6 +228,7 @@
         <p>My work focuses on practical, evidence-oriented systems that translate theory into usable tools.</p>
         <p style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
           <a href="#" onclick="switchTab('research'); return false;" style="display:inline-block;padding:0.9rem 2rem;background:var(--accent);color:#000;border-radius:999px;text-decoration:none;font-weight:bold;">View Research →</a>
+          <a href="#" onclick="switchTab('apps'); return false;" style="display:inline-block;padding:0.9rem 2rem;border:2px solid var(--accent);color:var(--accent);border-radius:999px;text-decoration:none;font-weight:bold;">Explore Apps →</a>
           <a href="#" onclick="switchTab('social'); return false;" style="display:inline-block;padding:0.9rem 2rem;border:2px solid var(--accent);color:var(--accent);border-radius:999px;text-decoration:none;font-weight:bold;">Connect</a>
         </p>
       </div>
@@ -128,8 +253,102 @@
         <p><a href="https://doi.org/10.5281/zenodo.18939068" target="_blank" rel="noopener noreferrer">Zenodo • DOI: 10.5281/zenodo.18939068 (March 10, 2026)</a></p>
       </div>
       <div class="card">
+        <h2>Open-Source Research Repositories</h2>
+        <p style="margin-bottom:0.5rem; opacity:0.85;">Libraries and frameworks published under the BEPframework organization on GitHub.</p>
+        <div class="repo-grid">
+          <a href="https://github.com/BEPframework/psi-universe-attractor" target="_blank" rel="noopener noreferrer" class="repo-item">
+            <i class="fas fa-wave-square"></i>
+            <div>
+              <strong>psi-universe-attractor</strong>
+              <span>Modular Python implementation of the Ψ_universe attractor filter — validated on real EAST #41195 data</span>
+            </div>
+          </a>
+          <a href="https://github.com/BEPframework/tasd-core" target="_blank" rel="noopener noreferrer" class="repo-item">
+            <i class="fas fa-cube"></i>
+            <div>
+              <strong>tasd-core</strong>
+              <span>TASD Core Framework — Toroidal-Attractor Signal Dynamics engine</span>
+            </div>
+          </a>
+          <a href="https://github.com/BEPframework/tasd-framework" target="_blank" rel="noopener noreferrer" class="repo-item">
+            <i class="fas fa-cubes"></i>
+            <div>
+              <strong>tasd-framework</strong>
+              <span>TASD Unified Framework — Toroidal-Attractor Signal Dynamics (open-source release)</span>
+            </div>
+          </a>
+          <a href="https://github.com/BEPframework/toroidal-dynamics-toolkit" target="_blank" rel="noopener noreferrer" class="repo-item">
+            <i class="fas fa-circle-nodes"></i>
+            <div>
+              <strong>toroidal-dynamics-toolkit</strong>
+              <span>Modular Python toolkit for dynamic toroidal modulation in frequency-domain signal processing</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="card">
         <h2>Foundation</h2>
         <p>MD (Universidad Autónoma de Guadalajara) + Chemistry background (Fresno State) + surgical internship. Independent researcher developing practical technologies under IZ LLC.</p>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section id="apps" class="tab-content">
+      <div class="card">
+        <h2>Interactive Apps & Tools</h2>
+        <p style="margin-bottom:2rem; opacity:0.85;">Browser-based research instruments and interactive simulations — no installation required. Built for exploration, education, and scientific communication.</p>
+
+        <div class="app-grid">
+
+          <div class="app-card">
+            <div class="app-icon"><i class="fas fa-atom"></i></div>
+            <h3>String Theory Cosmos v2.0</h3>
+            <p>Deterministic toy model of string/M-theory and cosmology with Ψuniverse fractal dynamics, live analysis dashboard, parameter sweeps, and exportable data.</p>
+            <div class="app-tags">
+              <span class="app-tag">String Theory</span>
+              <span class="app-tag">Ψuniverse</span>
+              <span class="app-tag">HTML</span>
+            </div>
+            <div class="app-links">
+              <a href="https://github.com/BEPframework/string-theory-cosmos" target="_blank" rel="noopener noreferrer" class="app-link-primary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+
+          <div class="app-card">
+            <div class="app-icon"><i class="fas fa-sun"></i></div>
+            <h3>Q216D Tokamak Simulation</h3>
+            <p>TASD-enhanced interactive 3D plasma visualization with ultra-precise energy transition control for tokamak research.</p>
+            <div class="app-tags">
+              <span class="app-tag">Tokamak</span>
+              <span class="app-tag">3D Plasma</span>
+              <span class="app-tag">TASD</span>
+            </div>
+            <div class="app-links">
+              <a href="https://github.com/BEPframework/q216d-tokamak-simulation" target="_blank" rel="noopener noreferrer" class="app-link-primary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+
+          <div class="app-card">
+            <div class="app-icon"><i class="fas fa-flask-vial"></i></div>
+            <h3>BEP Field Lab</h3>
+            <p>Interactive research tool for testing Belonging–Energy–Prediction field dynamics with uploaded CSV/Excel data.</p>
+            <div class="app-tags">
+              <span class="app-tag">BEP Framework</span>
+              <span class="app-tag">Data Analysis</span>
+              <span class="app-tag">HTML</span>
+            </div>
+            <div class="app-links">
+              <a href="https://github.com/BEPframework/bep-field-lab" target="_blank" rel="noopener noreferrer" class="app-link-primary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p style="margin-top:2.5rem; text-align:center;">
+          <a href="https://github.com/BEPframework" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:bold; font-size:1.1rem;">
+            View all repositories on GitHub →
+          </a>
+        </p>
       </div>
     </section>
 
@@ -149,7 +368,7 @@
           <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Quiroz%2C%20Nicolas%20Brian%22&l=list&p=1&s=20&sort=newest" 
              target="_blank" rel="noopener noreferrer" 
              style="color:var(--accent); font-weight:bold; font-size:1.1rem;">
-            View all 17 preprints on Zenodo →
+            View all 19 preprints on Zenodo →
           </a>
         </p>
         <p>Full ORCID: <a href="https://orcid.org/0009-0003-8431-0048" target="_blank" rel="noopener noreferrer">0009-0003-8431-0048</a></p>
